@@ -139,7 +139,11 @@ class User_Model{
                                             $_SESSION['user']['token'] = $row['token'];
                                             $_SESSION['user']['role'] = $row['role'];
                                             $_SESSION["user"]['id'] = $userId;
-                                            header("Location: ../?page=home");
+                                            if($_SESSION['user']['role'] === 'admin'){
+                                                header("Location: ../?page=admin");
+                                            }else{
+                                                header("Location: ../?page=home");
+                                            }
                                         }else{
                                             $mess = "Mật khẩu sai";
                                         }
